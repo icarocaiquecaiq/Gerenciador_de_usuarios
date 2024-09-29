@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="d-flex justify-content-center align-items-center flex-column w-100 vh-100 bg-dark">
+        <h2 class="d-block mb-3 text-white">Login</h2>
+        <form action="/login" method="post" class="text-white">
+            <div class="mb-3">
+                <label for="emailInput" class="form-label">Email</label>
+                <input type="email" class="form-control" id="emailInput" aria-describedby="emailHelp" name="email" placeholder= "exemplo@dominio.com" required>
+                <div id="emailHelp" class="form-text text-white">Não vamos compartilhar seu e-mail.</div>
+            </div>
+            <div class="mb-3">
+                <label for="passwordInput" class="form-label">Password</label>
+                <input type="password" class="form-control" id="passwordInput" name="senha" required minlength="8"
+                maxlength="20" placeholder="digite a senha">
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

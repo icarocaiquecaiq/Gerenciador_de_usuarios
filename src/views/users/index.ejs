@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Usuários Cadastrados</title>
+    <!-- Bootstrap CSS CDN -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <h1 class="mb-4">Lista de Usuários</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th>Papel</th>
+                    <th>Data de Cadastro</th>
+                    <th>status</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% if (userData.length > 0) { %>
+                    <% userData.forEach(user => { %>
+                        <tr>
+                            <td><%= user.id %></td>
+                            <td><%= user.name %></td>
+                            <td><%= user.email %></td>
+                            <td><%= user.papel %></td>
+                            <td><%= user.data_cadastro %></td>
+
+                            <!-- logica para display de usuario ativo -->
+                            <% if(user.is_ativo !== 0){ %>
+                                <td>
+                                    ativo
+                                </td>
+                            <% } else{ %>  
+                                <td>
+                                    desativo
+                                </td>
+                            <% } %>
+
+                            <td class="d-flex d-flex-wrap gap-2">
+                                <form action="/users/<%= user.id %>/edit" method="post" class="d-flex align-items-start"> 
+                                    <button type="submit" class="btn btn-link m-0 p-0 border border-0 ">editar</button>
+                                </form>
+                                <form action="/users/<%= user.id %>/delete" method="post" class="d-flex align-items-start">
+                                    <button type="submit" class="btn btn-link m-0 p-0 border border-0">excluir</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <% }) %>
+
+                <%} else {%>
+                <tr>
+                    <td colspan="4">Nenhuma categoria cadastrada</td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <a href="/users/add" class="btn btn-primary mt-3">Adicionar</a>
+    </div>
+
+    <!-- Bootstrap JS CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
